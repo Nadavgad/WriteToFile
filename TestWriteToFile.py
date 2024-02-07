@@ -9,16 +9,26 @@ import os
 class TestWriteToFile(unittest.TestCase):
 
     def setUp(self):
+        """
+        Set up method to clean test files before each test.
+        """
         # Clean the test files before each test
         self.clean_file("test_write_file.txt")
         self.clean_file("test_delim_file.txt")
 
     def tearDown(self):
+        """
+        Tear down method to clean up any remaining files after each test.
+        """
         # Clean up any remaining files after each test
         self.clean_file("test_write_file.txt")
         self.clean_file("test_delim_file.txt")
 
     def clean_file(self, file_name):
+        """
+        Helper method to delete or truncate the file to clean it.
+        :param file_name: Name of the file to clean.
+        """
         # Delete or truncate the file to clean it
         if os.path.exists(file_name):
             os.remove(file_name)
@@ -26,6 +36,9 @@ class TestWriteToFile(unittest.TestCase):
             pass
 
     def test_write_file(self):
+        """
+        Test method for WriteFile class.
+        """
         # Test WriteFile class
         file_name = "test_write_file.txt"
         write_file_name = WriteFile(file_name)
@@ -36,6 +49,9 @@ class TestWriteToFile(unittest.TestCase):
                          f"Line should be 'Test Line' we got {content}")
 
     def test_log_file(self):
+        """
+        Test method for LogFile class.
+        """
         # Test LogFile class
         file_name = "test_write_file.txt"
         log_file = LogFile(file_name)
@@ -48,6 +64,9 @@ class TestWriteToFile(unittest.TestCase):
                          f"Line should be {expected_content} we got {content}")
 
     def test_delim_file(self):
+        """
+        Test method for DelimFile class.
+        """
         # Test DelimFile class
         file_name = "test_delim_file.txt"
         delimiter = ","
